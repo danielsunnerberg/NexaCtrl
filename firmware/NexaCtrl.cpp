@@ -153,8 +153,6 @@ void NexaCtrl::Transmit(int pulse_length)
     int pulse_count;
     int transmit_count;
 
-    cli(); // disable interupts
-
     for (transmit_count = 0; transmit_count < 2; transmit_count++)
     {
         if (led_pin_ > 0) {
@@ -184,8 +182,6 @@ void NexaCtrl::Transmit(int pulse_length)
 
         delayMicroseconds(10000);
     }
-
-    sei(); // enable interupts
 }
 
 void NexaCtrl::TransmitLatch1(void)
