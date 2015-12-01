@@ -7,12 +7,6 @@
 
 #include "NexaCtrl.h"
 
-extern "C" {
-    // AVR LibC Includes
-#include <inttypes.h>
-#include <avr/interrupt.h>
-}
-
 const int NexaCtrl::kPulseHigh = 275;
 const int NexaCtrl::kPulseLow0 = 275;
 const int NexaCtrl::kPulseLow1 = 1225;

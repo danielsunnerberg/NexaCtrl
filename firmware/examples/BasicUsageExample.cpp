@@ -1,4 +1,4 @@
-#include <NexaCtrl.h>
+#include <NexaCtrl/NexaCtrl.h>
 
 #define TX_PIN 13
 #define RX_PIN 8
