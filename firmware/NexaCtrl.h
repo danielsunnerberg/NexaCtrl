@@ -1,8 +1,6 @@
 #ifndef NexaCtrl_h
 #define NexaCtrl_h
 
-#include "Arduino.h"
-
 class NexaCtrl
 {
     public:
