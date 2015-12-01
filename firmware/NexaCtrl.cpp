@@ -5,6 +5,7 @@
  * Version 02 by Carl Gunnarsson - Refactoring and adding support for absolute dimming
  */
 
+#include "application.h"
 #include "NexaCtrl.h"
 
 const int NexaCtrl::kPulseHigh = 275;
