@@ -69,8 +69,14 @@ void NexaCtrl::DeviceOff(unsigned long controller_id, unsigned int device_id)
     Transmit(kLowPulseLength);
 }
 
+/**
+ * Dims a device to the specified level (0-100).
+ */
 void NexaCtrl::DeviceDim(unsigned long controller_id, unsigned int device_id, unsigned int dim_level)
 {
+    // Normally, allowed input would be 0-15, but 0-100 makes more sense.
+    dim_level *= (15/100);
+
     SetControllerBits(controller_id);
 
     SetBit(kGroupFlagOffset, 0);
