@@ -159,7 +159,7 @@ void NexaCtrl::Transmit(int pulse_length)
     for (transmit_count = 0; transmit_count < 2; transmit_count++)
     {
         if (led_pin_ > 0) {
-            digitalWrite(led_pin_, HIGH);
+            pinSetFast(led_pin_);
         }
         TransmitLatch1();
         TransmitLatch2();
@@ -171,9 +171,9 @@ void NexaCtrl::Transmit(int pulse_length)
          */
         for (pulse_count = 0; pulse_count < pulse_length; pulse_count++)
         {
-            digitalWrite(tx_pin_, HIGH);
+            pinSetFast(tx_pin_);
             delayMicroseconds(kPulseHigh);
-            digitalWrite(tx_pin_, LOW);
+            pinResetFast(tx_pin_);
             delayMicroseconds(low_pulse_array[pulse_count]);
         }
 
@@ -193,20 +193,20 @@ void NexaCtrl::Transmit(int pulse_length)
 void NexaCtrl::TransmitLatch1(void)
 {
     // bit of radio shouting before we start
-    digitalWrite(tx_pin_, HIGH);
+    pinSetFast(tx_pin_);
     delayMicroseconds(kPulseLow0);
     // low for 9900 for latch 1
-    digitalWrite(tx_pin_, LOW);
+    pinResetFast(tx_pin_);
     delayMicroseconds(9900);
 }
 
 void NexaCtrl::TransmitLatch2(void)
 {
     // high for a moment 275
-    digitalWrite(tx_pin_, HIGH);
+    pinSetFast(tx_pin_);
     delayMicroseconds(kPulseLow0);
     // low for 2675 for latch 2
-    digitalWrite(tx_pin_, LOW);
+    pinResetFast(tx_pin_);
     delayMicroseconds(2675);
 }
 
@@ -221,9 +221,5 @@ void itob(bool *bits, unsigned long integer, int length) {
 }
 
 unsigned long power2(int power){    //gives 2 to the (power)
-    unsigned long integer=1;
-    for (int i=0; i<power; i++){
-        integer*=2;
-    }
-    return integer;
+    return 1 << power;
 }
